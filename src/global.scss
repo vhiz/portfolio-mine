@@ -1,0 +1,11 @@
+$primaryColor: wheat;
+$secondaryColor: rgb(24, 22, 22);
+
+
+$width: 768px;
+
+@mixin mobile{
+    @media(max-width: #{$width}){
+        @content
+    }
+}
