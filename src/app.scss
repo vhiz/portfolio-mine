@@ -1,25 +1,27 @@
-@import './global.scss';
+@import "./global.scss";
 
 .app {
-    height: 100vh;
-
+  height: 100vh;
+  @include themify($themes) {
     .sections {
-        width: 100%;
-        height: calc(100vh - 70px);
-        position: relative;
-        top: 70px;
-        background-color: $primaryColor;
-        scroll-behavior: smooth;
-        scroll-snap-type: y mandatory;
-        scrollbar-width: none;
-        &::-webkit-scrollbar{
-            display: none;
-        }
+      width: 100%;
+      height: calc(100vh - 70px);
+      position: relative;
+      top: 70px;
+      background-color: themed("bg");
+      scroll-behavior: smooth;
+      scroll-snap-type: y mandatory;
+      scrollbar-width: none;
+      transition: ease 1s;
+      &::-webkit-scrollbar {
+        display: none;
+      }
 
-        >* {
-            width: 100vw;
-            height: calc(100vh - 70px);
-            scroll-snap-align: start;
-        }
+      > * {
+        width: 100vw;
+        height: calc(100vh - 70px);
+        scroll-snap-align: start;
+      }
     }
+  }
 }

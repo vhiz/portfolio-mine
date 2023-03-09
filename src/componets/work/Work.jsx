@@ -1,31 +1,35 @@
-import './work.scss'
-import StayCurrentPortraitIcon from '@mui/icons-material/StayCurrentPortrait';
-import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import { works } from '../../data/work';
-import { useState } from 'react';
+import "./work.scss";
+import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import { works } from "../../data/work";
+import { useState } from "react";
 
 export default function Work() {
-  const [currentSlide, setCurrentSlide] = useState(0)
+  const [currentSlide, setCurrentSlide] = useState(0);
   const handleClick = (way) => {
-    way = 'left' ? setCurrentSlide(currentSlide > 0 ? currentSlide - 1 : 2)
-      : setCurrentSlide(currentSlide < works.length - 1 ? currentSlide + 1 : 0)
-  }
+    way === "left"
+      ? setCurrentSlide(currentSlide > 0 ? currentSlide - 1 : 2)
+      : way === "right"
+      ? setCurrentSlide(currentSlide < works.length - 1 ? currentSlide + 1 : 0)
+      : setCurrentSlide(currentSlide > 0 ? currentSlide - 1 : 2);
+  };
 
   return (
-    <div className='work' id='work'>
-      <div className="slider" style={{ transform: `translateX(-${currentSlide * 100}vw)` }}>
-        {works.map(d => (
+    <div className="work" id="work">
+      <div
+        className="slider"
+        style={{ transform: `translateX(-${currentSlide * 100}vw)` }}
+      >
+        {works.map((d) => (
           <div className="contanier">
-            <div className="item">
+            <div className="item" key={d.id}>
               <div className="left">
                 <div className="leftContanier">
                   <div className="imgContanier">
-                    <StayCurrentPortraitIcon className='icon' />
+                    <img src={d.icon} alt="" />
                   </div>
                   <h2>{d.title}</h2>
                   <p>{d.desc}</p>
-                  <span>Projects</span>
                 </div>
               </div>
               <div className="right">
@@ -35,8 +39,14 @@ export default function Work() {
           </div>
         ))}
       </div>
-      <KeyboardArrowLeftIcon className='arrow left' onClick={() => handleClick('left')} />
-      <KeyboardArrowRightIcon className='arrow right' onClick={() => handleClick()} />
+      <KeyboardArrowLeftIcon
+        className="arrow left"
+        onClick={() => handleClick("left")}
+      />
+      <KeyboardArrowRightIcon
+        className="arrow right"
+        onClick={() => handleClick("right")}
+      />
     </div>
-  )
+  );
 }

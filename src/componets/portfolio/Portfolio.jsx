@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import List from '../list/List'
 import './portfolio.scss'
 import { Api, featured, webApps } from '../../data/Data'
+import { Link } from 'react-router-dom'
 export default function Portfolio() {
 
   const list = [
@@ -48,12 +49,14 @@ export default function Portfolio() {
         ))}
       </ul>
       <div className="contanier">
-        {data.map(d=>(
-          <div className="item">
-          <img src={d.img} alt="" />
-          <h3>{d.title}</h3>
-        </div>
-          ))}
+        {data.map(d => (
+          <Link>
+            <div className="item" key={d.id}>
+              <img src={d.img} alt="" />
+              <h3>{d.title}</h3>
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   )

@@ -2,6 +2,7 @@ import './intro.scss'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useEffect, useRef } from 'react';
 import {init}  from 'ityped'
+import Avatar from '../../icons/vhiz.png'
 
 export default function Intro() {
 
@@ -13,7 +14,7 @@ export default function Intro() {
     <div className='intro' id='intro'>
       <div className="left">
         <div className="imgContanier">
-          <img src="/assets/me.jpg" alt="" />
+          <img src={Avatar} alt="" />
         </div>
       </div>
       <div className="right">
