@@ -45,6 +45,7 @@ app.post("/mail", async (req, res) => {
   }
 });
 
-app.listen(3004, () => {
-  console.log("connected");
+const Port = process.env.PORT || 3004;
+app.listen(Port, () => {
+  console.log("connected" + Port);
 });
