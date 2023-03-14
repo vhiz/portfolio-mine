@@ -1,56 +1,58 @@
-import { useEffect, useState } from 'react'
-import List from '../list/List'
-import './portfolio.scss'
-import { Api, featured, webApps } from '../../data/Data'
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from "react";
+import List from "../list/List";
+import "./portfolio.scss";
+import { Api, featured, webApps } from "../../data/Data";
+import { Link } from "react-router-dom";
 export default function Portfolio() {
-
   const list = [
     {
       id: "featured",
-      title: 'Featured'
+      title: "Featured",
     },
     {
       id: "webApps",
-      title: 'Web Apps'
+      title: "Web Apps",
     },
     {
       id: "api",
-      title: `Api's`
+      title: `Api's`,
     },
+  ];
 
-  ]
-
-  const [selected, setSelected] = useState('featured')
-  const [data, setData] = useState([])
+  const [selected, setSelected] = useState("featured");
+  const [data, setData] = useState([]);
   useEffect(() => {
     switch (selected) {
-      case 'featured':
+      case "featured":
         setData(featured);
         break;
-      case 'webApps':
+      case "webApps":
         setData(webApps);
         break;
-      case 'api':
+      case "api":
         setData(Api);
         break;
       default:
-        setData(featured)
-
+        setData(featured);
     }
-  }, [selected])
+  }, [selected]);
 
   return (
-    <div className='portfolio' id='portfolio'>
+    <div className="portfolio" id="portfolio">
       <h1>Portfolio</h1>
       <ul>
-        {list.map(item => (
-          <List title={item.title} active={selected === item.id} setSelected={setSelected} id={item.id} />
+        {list.map((item) => (
+          <List
+            title={item.title}
+            active={selected === item.id}
+            setSelected={setSelected}
+            id={item.id}
+          />
         ))}
       </ul>
       <div className="contanier">
-        {data.map(d => (
-          <Link>
+        {data.map((d) => (
+          <Link to={d.link}>
             <div className="item" key={d.id}>
               <img src={d.img} alt="" />
               <h3>{d.title}</h3>
@@ -59,5 +61,5 @@ export default function Portfolio() {
         ))}
       </div>
     </div>
-  )
+  );
 }
