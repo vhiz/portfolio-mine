@@ -31,7 +31,7 @@ app.post("/mail", async (req, res) => {
     const mailOptions = {
       from: req.body.email,
       to: "victormgbeahurike82@gmail.com",
-      subject: "Message from portfolio",
+      subject: "Message from portfolio" + req.body.name,
       html: `<p>${req.body.message}</p> from ${req.body.email}`,
     };
 

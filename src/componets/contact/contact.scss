@@ -1,94 +1,64 @@
 @import "../../global.scss";
 
 .contact {
-  display: flex;
   @include themify($themes) {
-    @include mobile {
-      flex-direction: column;
-    }
-    color: themed("textColor");
+    height: 100vh;
+    scroll-snap-align: center;
 
-    .left {
-      flex: 1;
-      overflow: hidden;
-
-      .shake {
-        font-size: 700px;
-
-        @include mobile {
-          font-size: 350px;
-        }
-      }
-    }
-
-    .right {
-      flex: 1;
+    .contanier {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      width: 100%;
+      justify-content: space-between;
+      gap: 50px;
+      height: 100%;
 
-      h2 {
-        font-size: 30px;
-      }
-
-      form {
-        width: 70%;
-        height: 70%;
+      .left {
+        flex: 1;
         display: flex;
-        flex-direction: column;
         align-items: center;
-        justify-content: space-around;
+        justify-content: flex-end;
 
-        input {
-          width: 300px;
-          height: 30px;
-          font-size: 14px;
-          background-color: transparent;
-          border: none;
-          border-bottom: 1px solid themed("border");
-          outline: none;
-          color: themed("textColor");
-
-          @include mobile {
-            width: 200px;
-            height: 20px;
+        form {
+          display: flex;
+          flex-direction: column;
+          width: 500px;
+          gap: 25px;
+          h1 {
+            color: themed('textColor');
+            font-weight: lighter;
           }
-        }
 
-        textarea {
-          width: 300px;
-          height: 200px;
-          font-size: 14px;
-          background-color: transparent;
-          outline: none;
-          border: 1px solid themed("border");
-          color: themed("textColor");
-
-          @include mobile {
-            width: 200px;
-            height: 100px;
-          }
-        }
-
-        button {
-          width: 150px;
-          height: 30px;
-          color: black;
-          background-color: yellow;
-          border: none;
-          border-radius: 10px;
-          font-weight: 500;
-          cursor: pointer;
-
-          &:focus {
+          input {
+            background-color: lightgray;
+            border: none;
             outline: none;
+            border-radius: 5px;
+            padding: 20px;
+          }
+
+          textarea {
+            background-color: lightgray;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            padding: 20px;
+          }
+
+          button {
+            padding: 20px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            background-color:#3b306c;
+            color: white;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
           }
         }
-
-        span {
-          color: green;
-        }
+      }
+      .right {
+        flex: 1;
       }
     }
   }

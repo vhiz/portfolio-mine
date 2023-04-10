@@ -1,7 +1,7 @@
 import "./contact.scss";
-import HandshakeOutlinedIcon from "@mui/icons-material/HandshakeOutlined";
 import { useState } from "react";
 import axios from "axios";
+import Map from "../../map/Map";
 
 export default function Contact() {
   const [inputs, setInputs] = useState({
@@ -19,7 +19,7 @@ export default function Contact() {
 
     try {
       const message = { ...inputs };
-      await axios.post("http://localhost:3004/mail", message);
+      await axios.post("https://portfolio-9134.onrender.com/mail", message);
       setMessage(true);
     } catch (error) {
       console.error(error.message);
@@ -28,26 +28,35 @@ export default function Contact() {
 
   return (
     <div className="contact" id="contact">
-      <div className="left">
-        <HandshakeOutlinedIcon className="shake" />
-      </div>
-      <div className="right">
-        <h2>Contact.</h2>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Email"
-            name="email"
-            onChange={handleChange}
-          />
-          <textarea
-            placeholder="Message"
-            name="message"
-            onChange={handleChange}
-          ></textarea>
-          <button type="submit">Send</button>
-          {message && <span>Thanks for reaching out</span>}
-        </form>
+      <div className="contanier">
+        <div className="left">
+          <form onSubmit={handleSubmit}>
+            <h1>Contact Us</h1>
+            <input
+              type="email"
+              placeholder="Email"
+              name="email"
+              onChange={handleChange}
+            />
+            <input
+              type="text"
+              placeholder="Name"
+              name="name"
+              onChange={handleChange}
+            />
+            <textarea
+              placeholder="Message"
+              name="message"
+              onChange={handleChange}
+              rows={10}
+            ></textarea>
+            <button type="submit">Send</button>
+            {message && <span>Thanks for reaching out</span>}
+          </form>
+        </div>
+        <div className="right">
+          <Map />
+        </div>
       </div>
     </div>
   );
